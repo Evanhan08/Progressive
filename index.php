@@ -11,18 +11,17 @@ include 'header.php';
             <p class="tag">&#127806; ORDER YOUR RICE</p>
             <h1>Rice at Your Doorstep</h1>
             <p><?php echo $tagline; ?></p>
-            <?php
-            // if-else for the store status
-            if ($isOpen) {
-                echo "<p class='in-stock'>We are open!</p>";
-            } else {
-                echo "<p class='sold-out'>Sorry, we are closed.</p>";
-            }
-            ?>
-            <a href="#order" class="btn">Order Now</a>
-        </div>
-        <div id="hero-logo">
-            <img src="img/logo.png" alt="Rice Dealer logo">
+            <div id="hero-row">
+                <?php
+                // if...else for the store status
+                if ($isOpen) {
+                    echo "<p class='in-stock'>We are open!</p>";
+                } else {
+                    echo "<p class='sold-out'>Sorry, we are closed.</p>";
+                }
+                ?>
+                <a href="#order" class="btn">Order Now</a>
+            </div>
         </div>
     </div>
 
@@ -30,17 +29,14 @@ include 'header.php';
     <div class="section" id="features">
         <div class="grid three">
             <div class="card">
-                <p class="icon">&#128666;</p>
                 <h3>Free Delivery</h3>
                 <p><?php echo $info["delivery"]; ?></p>
             </div>
             <div class="card">
-                <p class="icon">&#128339;</p>
                 <h3>Every Day</h3>
                 <p><?php echo $info["days"]; ?></p>
             </div>
             <div class="card">
-                <p class="icon">&#127806;</p>
                 <h3>Local Rice</h3>
                 <p><?php echo $info["type"]; ?></p>
             </div>
@@ -51,7 +47,10 @@ include 'header.php';
 
     <!-- order section -->
     <div class="section" id="order">
+        <p class="tag">&#127806; FILL OUT THE FORM</p>
         <h2 class="section-title">Place Your Order</h2>
+        <p>Choose your rice and fill out the form. We will contact you to confirm your order.</p>
+
         <div class="order-grid">
 
             <!-- order form -->
@@ -122,28 +121,33 @@ include 'header.php';
                 </form>
             </div>
 
-            <!-- order info -->
-            <div class="card">
-                <h3>Order Info</h3>
-                <div class="info-item">
-                    <span class="info-icon">&#128205;</span>
-                    <p><b>Location</b><br><?php echo $location; ?></p>
+            <!-- logo and order info -->
+            <div>
+                <div id="order-logo">
+                    <img src="img/logo.png" alt="Rice Dealer logo">
                 </div>
-                <div class="info-item">
-                    <span class="info-icon">&#128339;</span>
-                    <p><b>Open</b><br><?php echo $info["days"]; ?></p>
-                </div>
-                <div class="info-item">
-                    <span class="info-icon">&#128222;</span>
-                    <p><b>Contact</b><br>Smart: <?php echo $smart; ?><br>Sun: <?php echo $sun; ?></p>
-                </div>
-                <div class="info-item">
-                    <span class="info-icon">&#128666;</span>
-                    <p><b>Delivery</b><br><?php echo $info["delivery"]; ?>. Other areas have a &#8369;<?php echo $deliveryFee; ?> fee.</p>
-                </div>
-                <div class="info-item">
-                    <span class="info-icon">&#128221;</span>
-                    <p><b>Please Note</b><br>We will contact you to confirm your order before delivery.</p>
+                <div class="card">
+                    <h3>Order Info</h3>
+                    <div class="info-item">
+                        <span class="info-icon">&#128205;</span>
+                        <p><b>Location</b><br><?php echo $location; ?></p>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">&#128339;</span>
+                        <p><b>Open</b><br><?php echo $info["days"]; ?></p>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">&#128222;</span>
+                        <p><b>Contact</b><br>Smart: <?php echo $smart; ?><br>Sun: <?php echo $sun; ?></p>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">&#128666;</span>
+                        <p><b>Delivery</b><br><?php echo $info["delivery"]; ?>. Other areas have a &#8369;<?php echo $deliveryFee; ?> fee.</p>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">&#128221;</span>
+                        <p><b>Please Note</b><br>We will contact you to confirm your order before delivery.</p>
+                    </div>
                 </div>
             </div>
 
