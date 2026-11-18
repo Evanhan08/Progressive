@@ -1,0 +1,196 @@
+/* ---------- MOBILE ---------- */
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #eeeeee;
+    background-color: #071f13;
+}
+
+/* top bar */
+#top-bar {
+    background-color: #0b5d2a;
+    border-bottom: 3px solid #d4af37;
+    padding: 10px 16px;
+}
+
+#brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #f1d36b;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+#nav {
+    margin-top: 8px;
+}
+
+#nav a {
+    display: inline-block;
+    padding: 4px 0;
+    margin-right: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#nav a:hover {
+    color: #f1d36b;
+}
+
+/* titles */
+#hero {
+    text-align: center;
+    padding: 24px 16px 8px;
+}
+
+#hero h1 {
+    margin: 0;
+    font-size: 26px;
+    color: #f1d36b;
+}
+
+#hero p {
+    margin: 8px 0 0;
+    font-size: 15px;
+}
+
+/* main sections */
+.box {
+    margin: 16px;
+    padding: 16px;
+    background-color: #0d3b21;
+    border-left: 5px solid #d4af37;
+    border-radius: 10px;
+}
+
+.box h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #f1d36b;
+}
+
+.box p,
+.box li {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.scroll {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+th {
+    padding: 8px 4px;
+    background-color: #d4af37;
+    color: #071f13;
+}
+
+td {
+    padding: 8px 4px;
+    border-bottom: 1px solid #23723b;
+    text-align: center;
+}
+
+td.name {
+    text-align: left;
+}
+
+.in-stock {
+    color: #7dff9a;
+    font-weight: bold;
+}
+
+.low-stock {
+    color: #ffb347;
+    font-weight: bold;
+}
+
+.sold-out {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+/* footer */
+#footer {
+    margin-top: 20px;
+    padding: 14px;
+    text-align: center;
+    font-size: 13px;
+    background-color: #0b5d2a;
+    border-top: 3px solid #d4af37;
+}
+
+/* ---------- TABLET ---------- */
+@media (min-width: 768px) {
+    #top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+    }
+
+    #nav {
+        margin-top: 0;
+    }
+
+    #nav a {
+        margin: 0 0 0 18px;
+        font-size: 15px;
+    }
+
+    #hero h1 {
+        font-size: 32px;
+    }
+
+    .box {
+        margin: 20px 40px;
+        padding: 22px;
+    }
+
+    table {
+        font-size: 15px;
+    }
+
+    th,
+    td {
+        padding: 10px 8px;
+    }
+}
+
+/* ---------- DESKTOP ---------- */
+@media (min-width: 1024px) {
+    #top-bar {
+        padding: 12px 120px;
+    }
+
+    #hero h1 {
+        font-size: 36px;
+    }
+
+    .box {
+        margin: 20px 120px;
+    }
+
+    table {
+        font-size: 16px;
+    }
+}
