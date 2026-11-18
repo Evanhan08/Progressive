@@ -1,179 +1,183 @@
 <?php
-// Pampanga Rice Dealer - Module 1 activity (PHP text-based store page)
-
-// ---------- VARIABLES ----------
-$storeName = "Pampanga Rice Dealer";
-$tagline = "100% local rice for Filipino families";
-$location = "Lubao, Pampanga";
-$sackKilos = 25;  // kilos in one sack (whole number)
-$discount = 0.10; // 10% off if you buy 2 or more sacks (decimal)
-$year = 2026;
-$isOpen = true;   // boolean
-
-// ---------- ARRAYS ----------
-// indexed arrays (same order: index 0 is Pinoy Rice, 1 is Jasmine, etc.)
-$names = array("Pinoy Rice", "Jasmine", "Buco Panda", "Kanin ni Juan");
-$prices = array(1250, 1500, 1400, 1350); // price per sack
-$stocks = array(40, 25, 0, 12);
-$payments = array("Cash on Delivery", "GCash", "PayMaya", "Bank Transfer");
-
-// associative array (each value has its own key)
-$info = array("days" => "Open every day", "delivery" => "Free delivery within the Lubao area", "type" => "100% local rice, no imported rice");
-
-// ---------- EXPRESSIONS AND OPERATORS ----------
-// price per kilo = price of sack / kilos in sack
-$kilo0 = $prices[0] / $sackKilos;
-$kilo1 = $prices[1] / $sackKilos;
-$kilo2 = $prices[2] / $sackKilos;
-$kilo3 = $prices[3] / $sackKilos;
-
-// price per sack if you buy 2 or more = price - (price * discount)
-$sale0 = $prices[0] - ($prices[0] * $discount);
-$sale1 = $prices[1] - ($prices[1] * $discount);
-$sale2 = $prices[2] - ($prices[2] * $discount);
-$sale3 = $prices[3] - ($prices[3] * $discount);
-
-// add all the stocks
-$totalStock = $stocks[0] + $stocks[1] + $stocks[2] + $stocks[3];
-
-// money if we sell all the sacks (price x stock)
-$totalValue = ($prices[0] * $stocks[0]) + ($prices[1] * $stocks[1]) + ($prices[2] * $stocks[2]) + ($prices[3] * $stocks[3]);
-
-// comparison operators (they give true or false)
-$pinoyInStock = $stocks[0] > 0;
-$jasmineInStock = $stocks[1] > 0;
-$bucoInStock = $stocks[2] > 0;
-
-// logical operators (and, or, not)
-$bothInStock = $pinoyInStock && $jasmineInStock;
-$anyInStock = $bucoInStock || $jasmineInStock;
-$bucoSoldOut = !$bucoInStock;
-
-// status of each rice (typed by me for now)
-$status0 = "In Stock";
-$status1 = "In Stock";
-$status2 = "Sold Out";
-$status3 = "In Stock";
+// index.php - home page with the order form
+require 'data.php';
+$pageTitle = "Home - " . $storeName;
+include 'header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $storeName; ?></title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-    <!-- top bar -->
-    <div id="top-bar">
-        <div id="brand">
-            <img src="img/logo.png" alt="Rice Dealer logo" class="logo">
-            <span><?php echo $storeName; ?></span>
-        </div>
-        <div id="nav">
-            <a href="#about">About</a>
-            <a href="#rice">Our Rice</a>
-            <a href="#delivery">Delivery</a>
-            <a href="#payment">Payment</a>
-        </div>
-    </div>
 
     <!-- title -->
     <div id="hero">
-        <h1>Welcome to <?php echo $storeName; ?></h1>
-        <p><?php echo $tagline; ?></p>
-        <p>Buy 2 or more sacks and get <?php echo $discount * 100; ?>% off!</p>
-    </div>
-
-    <!-- about -->
-    <div class="box" id="about">
-        <h2>About Our Business</h2>
-        <p>We are a local rice retailer in <?php echo $location; ?>. Our goal is to make quality local rice easier for families to buy, and to support our Filipino farmers.</p>
-        <p><?php echo $info["type"]; ?>.</p>
-    </div>
-
-    <!-- products table -->
-    <div class="box" id="rice">
-        <h2>Our Rice</h2>
-        <p>Prices are per sack (<?php echo $sackKilos; ?> kilos).</p>
-        <div class="scroll">
-            <table>
-                <tr>
-                    <th>Rice</th>
-                    <th>Per Sack</th>
-                    <th>2+ Sacks</th>
-                    <th>Per Kilo</th>
-                    <th>Stock</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td class="name"><?php echo $names[0]; ?></td>
-                    <td>&#8369;<?php echo $prices[0]; ?></td>
-                    <td>&#8369;<?php echo $sale0; ?></td>
-                    <td>&#8369;<?php echo $kilo0; ?></td>
-                    <td><?php echo $stocks[0]; ?></td>
-                    <td class="in-stock"><?php echo $status0; ?></td>
-                </tr>
-                <tr>
-                    <td class="name"><?php echo $names[1]; ?></td>
-                    <td>&#8369;<?php echo $prices[1]; ?></td>
-                    <td>&#8369;<?php echo $sale1; ?></td>
-                    <td>&#8369;<?php echo $kilo1; ?></td>
-                    <td><?php echo $stocks[1]; ?></td>
-                    <td class="in-stock"><?php echo $status1; ?></td>
-                </tr>
-                <tr>
-                    <td class="name"><?php echo $names[2]; ?></td>
-                    <td>&#8369;<?php echo $prices[2]; ?></td>
-                    <td>&#8369;<?php echo $sale2; ?></td>
-                    <td>&#8369;<?php echo $kilo2; ?></td>
-                    <td><?php echo $stocks[2]; ?></td>
-                    <td class="sold-out"><?php echo $status2; ?></td>
-                </tr>
-                <tr>
-                    <td class="name"><?php echo $names[3]; ?></td>
-                    <td>&#8369;<?php echo $prices[3]; ?></td>
-                    <td>&#8369;<?php echo $sale3; ?></td>
-                    <td>&#8369;<?php echo $kilo3; ?></td>
-                    <td><?php echo $stocks[3]; ?></td>
-                    <td class="in-stock"><?php echo $status3; ?></td>
-                </tr>
-            </table>
+        <div id="hero-text">
+            <p class="tag">&#127806; ORDER YOUR RICE</p>
+            <h1>Rice at Your Doorstep</h1>
+            <p><?php echo $tagline; ?></p>
+            <?php
+            // if-else for the store status
+            if ($isOpen) {
+                echo "<p class='in-stock'>We are open!</p>";
+            } else {
+                echo "<p class='sold-out'>Sorry, we are closed.</p>";
+            }
+            ?>
+            <a href="#order" class="btn">Order Now</a>
+        </div>
+        <div id="hero-logo">
+            <img src="img/logo.png" alt="Rice Dealer logo">
         </div>
     </div>
 
-    <!-- delivery -->
-    <div class="box" id="delivery">
-        <h2>Delivery</h2>
-        <p><?php echo $info["delivery"]; ?>.</p>
-        <p><?php echo $info["days"]; ?>.</p>
-        <p>Open now? <?php echo $isOpen; ?> (1 means true)</p>
+    <!-- features -->
+    <div class="section" id="features">
+        <div class="grid three">
+            <div class="card">
+                <p class="icon">&#128666;</p>
+                <h3>Free Delivery</h3>
+                <p><?php echo $info["delivery"]; ?></p>
+            </div>
+            <div class="card">
+                <p class="icon">&#128339;</p>
+                <h3>Every Day</h3>
+                <p><?php echo $info["days"]; ?></p>
+            </div>
+            <div class="card">
+                <p class="icon">&#127806;</p>
+                <h3>Local Rice</h3>
+                <p><?php echo $info["type"]; ?></p>
+            </div>
+        </div>
     </div>
 
-    <!-- payment -->
-    <div class="box" id="payment">
-        <h2>Payment Methods</h2>
-        <p>1. <?php echo $payments[0]; ?></p>
-        <p>2. <?php echo $payments[1]; ?></p>
-        <p>3. <?php echo $payments[2]; ?></p>
-        <p>4. <?php echo $payments[3]; ?></p>
+    <?php include 'menu.php'; ?>
+
+    <!-- order section -->
+    <div class="section" id="order">
+        <h2 class="section-title">Place Your Order</h2>
+        <div class="order-grid">
+
+            <!-- order form -->
+            <div class="card">
+                <form method="POST" action="process.php">
+                    <div class="form-grid">
+                        <div>
+                            <label>Full Name</label>
+                            <input name="customer_name" placeholder="Enter your full name" required>
+                        </div>
+                        <div>
+                            <label>Contact Number</label>
+                            <input name="contact" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="full">
+                            <label>Delivery Address</label>
+                            <textarea name="address" placeholder="House no., street, barangay" required></textarea>
+                        </div>
+                        <div>
+                            <label>Delivery Area</label>
+                            <select name="area">
+                                <option value="Lubao">Lubao (free delivery)</option>
+                                <option value="Other">Other area</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Delivery Date</label>
+                            <input name="date" type="date">
+                        </div>
+                        <div class="full">
+                            <label>Payment Method</label>
+                            <select name="payment">
+                                <?php
+                                // foreach loop for the payment options
+                                foreach ($payments as $pay) {
+                                    echo "<option value='" . $pay . "'>" . $pay . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3>How many sacks of each rice?</h3>
+                    <div class="qty-grid">
+                        <?php
+                        // for loop, one number box for each rice
+                        for ($i = 0; $i < $totalRice; $i++) {
+                            // the most they can order is 10 sacks or whatever is left in stock
+                            $max = $stocks[$i];
+                            if ($max > 10) {
+                                $max = 10;
+                            }
+                            echo "<div>";
+                            echo "<label>" . $names[$i] . "</label>";
+                            echo "<input name='sack" . $i . "' type='number' min='0' max='" . $max . "' value='0'>";
+                            echo "</div>";
+                        }
+                        ?>
+                    </div>
+
+                    <label>Notes (Optional)</label>
+                    <textarea name="note" placeholder="Any notes for your order?"></textarea>
+
+                    <div class="buttons">
+                        <button type="submit" class="btn">Submit Order</button>
+                        <button type="reset" class="btn-reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- order info -->
+            <div class="card">
+                <h3>Order Info</h3>
+                <div class="info-item">
+                    <span class="info-icon">&#128205;</span>
+                    <p><b>Location</b><br><?php echo $location; ?></p>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">&#128339;</span>
+                    <p><b>Open</b><br><?php echo $info["days"]; ?></p>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">&#128222;</span>
+                    <p><b>Contact</b><br>Smart: <?php echo $smart; ?><br>Sun: <?php echo $sun; ?></p>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">&#128666;</span>
+                    <p><b>Delivery</b><br><?php echo $info["delivery"]; ?>. Other areas have a &#8369;<?php echo $deliveryFee; ?> fee.</p>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">&#128221;</span>
+                    <p><b>Please Note</b><br>We will contact you to confirm your order before delivery.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <!-- summary -->
-    <div class="box" id="summary">
-        <h2>Store Summary</h2>
-        <p>Total sacks in stock: <?php echo $totalStock; ?></p>
-        <p>Total value of all sacks: &#8369;<?php echo $totalValue; ?></p>
-        <p>Pinoy Rice and Jasmine both in stock? <?php echo $bothInStock; ?> (1 means true)</p>
-        <p>Buco Panda or Jasmine in stock? <?php echo $anyInStock; ?> (1 means true)</p>
-        <p>Is Buco Panda sold out? <?php echo $bucoSoldOut; ?> (1 means true)</p>
+    <!-- steps and reasons -->
+    <div class="section" id="steps">
+        <div class="grid two">
+            <div class="card">
+                <h3>Simple Ordering Process</h3>
+                <ol>
+                <?php
+                // foreach loop for the steps
+                foreach ($steps as $step) {
+                    echo "<li>" . $step . "</li>";
+                }
+                ?>
+                </ol>
+            </div>
+            <div class="card">
+                <h3>Why Buy Local Rice?</h3>
+                <ul>
+                <?php
+                // while loop to show every reason
+                $i = 0;
+                while ($i < 3) {
+                    echo "<li>" . $reasons[$i] . "</li>";
+                    $i++;
+                }
+                ?>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <!-- footer -->
-    <footer>
-        &copy; <?php echo $year . " " . $storeName; ?>. Support our local farmers!
-    </footer>
-
-</body>
-</html>
+<?php include 'footer.php'; ?>
