@@ -8,10 +8,10 @@ $location = "Lubao, Pampanga";
 $smart = "0908-9646734";
 $sun = "0933-8519537";
 $sackKilos = 25;
-$deliveryFee = 150; // delivery fee outside the Lubao area
-$rate2 = 0.05;      // 5% off for 2 or more sacks
-$rate5 = 0.10;      // 10% off for 5 or more sacks
-$rate10 = 0.15;     // 15% off for 10 or more sacks
+$deliveryFee = 150; 
+$rate2 = 0.05;      
+$rate5 = 0.10;      
+$rate10 = 0.15;   
 $totalRice = 9;
 $isOpen = true;
 

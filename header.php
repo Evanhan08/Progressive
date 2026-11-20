@@ -21,6 +21,7 @@
             <a href="index.php">HOME |</a>
             <a href="index.php#rice">RICE |</a>
             <a href="index.php#order">ORDER |</a>
+            <a href="functions.php">STOCKS |</a>
         </div>
     </div>
 
